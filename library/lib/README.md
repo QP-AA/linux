@@ -1,0 +1,12 @@
+- 静态库制作
+  - `gcc -c xxx.c` : 得到.o文件
+  - `ar rcs libxxx.a xxx.o` : 得到对应静态库文件
+  - 将静态库文件和对应头文件放到指定位置
+  - `gcc main.c -o app -I ./include -l calc -L ./lib` : 对main文件编译
+
+- 动态库制作
+  - `gcc -c -fpic xxx.c` : 生成和位置无关的代码
+  - `gcc -shared xxx.o -o libxxx.so` : 生成动态库文件
+  - `export LD_LIBARY_PATH=$export LD_LIBARY_PATH:/path/to/your/dir` : 导入环境变量
+  - `gcc main.c -o app -I ./include -l calc -L ./lib`使用动态库编译
+  - `ldd app` :查找可执行文件app依赖对应路径
